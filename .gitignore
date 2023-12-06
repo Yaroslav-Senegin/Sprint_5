@@ -2,13 +2,12 @@
 # File created using 'AnGitIgnored' extensions for Visual Studio Code: 
 # https://marketplace.visualstudio.com/items?itemName=AnAppWiLos.angitignored 
 #-------------------------------------------------------------------------------
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,venv
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,macos,venv
 
 ### macOS ###
 # General
 .DS_Store
-git rm --cached .DS_Store
 .AppleDouble
 .LSOverride
 
@@ -39,6 +38,20 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -58,7 +71,9 @@ Temporary Items
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,venv
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
+__pycache__
+*.pyc

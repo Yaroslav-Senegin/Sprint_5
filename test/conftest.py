@@ -1,9 +1,9 @@
-import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+import pytest
 
-# путь до хромдрайвера
+# путь до chromedriver
 DRIVER_PATH = '../chromedriver'
 
 

@@ -16,9 +16,9 @@ class Locators:
     incorrect_pass_check = By.XPATH, './/fieldset[3]/div/p'  # Проверка сообщения "Некорректный пароль"
     user_exists_message = By.XPATH, './/div/main/div/p[text()="Такой пользователь уже существует"]'  # Сообщение "Такой пользователь уже существует"
     user_exists_check = By.XPATH, './/div/main/div/p'  # для проверки сообщения "Такой пользователь уже существует"
-    input_field1 = By.XPATH, './/fieldset[1]//input'  # Поле для ввода данных
-    input_field2 = By.XPATH, './/fieldset[2]//input'  # Поле для ввода данных
-    input_field3 = By.XPATH, './/fieldset[3]//input'  # Поле для ввода данных
+    input_name_field = By.XPATH, ".//label[text() = 'Имя']/following-sibling::input"  # Поле ввода имени пользователя
+    input_email_field = By.XPATH, ".//label[text() = 'Email']/following-sibling::input"  # Поле ввода email пользователя
+    input_password_field = By.XPATH, ".//label[text() = 'Пароль']/following-sibling::input"  # Поле ввода пароля пользователя
     header_h2 = By.XPATH, './/h2'  # Заголовок H2
     make_burger_tag_h1 = By.XPATH, './/section[1]/h1[text()="Соберите бургер"]'  # Заголовок "Соберите бургер" в конструкторе
     constructor_button = By.XPATH, './/p[text()="Конструктор"]'  # Kнопка "Конструктор"

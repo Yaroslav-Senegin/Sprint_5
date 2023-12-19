@@ -2,9 +2,6 @@ from selenium.webdriver.common.by import By
 
 
 class Locators:
-    page_main_url = 'https://stellarburgers.nomoreparties.site/'  # URL главной страницы Конструктор
-    page_login_url = 'https://stellarburgers.nomoreparties.site/login' # URL страницы логин
-    page_registration_url = 'https://stellarburgers.nomoreparties.site/register'  # URL страницы регистрации
     login_button_main = By.XPATH, './/button[text()="Войти в аккаунт"]'  # Кнопка "Войти в аккаунт" с главной страницы
     login_button_login_page = By.XPATH, './/button[text()="Войти"]'  # Кнопка "Войти" со страницы логина
     login_header_tag_h2 = By.XPATH, './/h2[text()="Вход"]'  # Заголовок "Вход"

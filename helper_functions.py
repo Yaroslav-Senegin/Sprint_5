@@ -16,7 +16,7 @@ def random_name():
 def random_email():
     email = (f"{''.join(random.choice(string.ascii_lowercase) for i in range(4))}_"
              f"{''.join(random.choice(string.ascii_lowercase) for i in range(6))}_"
-             f"{random.randint(3000, 3999)}@yandex.ru")
+             f"{random.randint(5000, 5999)}@yandex.ru")
     return email
 
 

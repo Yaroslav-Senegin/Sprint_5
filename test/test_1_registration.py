@@ -8,9 +8,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class TestRegistration:
     # Попытка регистрации без имени
-    def test_registration_without_name(driver, create_account):
+    @pytest.mark.parametrize('name', [''])
+    def test_registration_without_name(driver, create_account, name):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, name='')
+        create_account(driver, name)
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.registration_button))
@@ -19,9 +20,10 @@ class TestRegistration:
 
 
     # Попытка регистрации без имейла
-    def test_registration_without_email(driver, create_account):
+    @pytest.mark.parametrize('email', [''])
+    def test_registration_without_email(driver, create_account, email):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, email='')
+        create_account(driver, email)
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.registration_button))
@@ -30,9 +32,10 @@ class TestRegistration:
 
 
     # Попытка регистрации без пароля
-    def test_registration_without_pass(driver, create_account):
+    @pytest.mark.parametrize('password', [''])
+    def test_registration_without_pass(driver, create_account, password):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, password='')
+        create_account(driver, password)
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.registration_button))

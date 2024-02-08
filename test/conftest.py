@@ -24,9 +24,9 @@ def driver():
 # Фикстура заполняет поля для регистрации
 @pytest.fixture
 def create_account(driver):
-    name = 'Yar'
-    email = 'yar_senegin_5124@yandex.ru'
-    password = 'Test123!'
+    name = helper_functions.random_name()
+    email = helper_functions.random_email()
+    password = helper_functions.random_pass()
 
     driver.find_element(*Locators.input_name_field).send_keys(name)
     driver.find_element(*Locators.input_email_field).send_keys(email)

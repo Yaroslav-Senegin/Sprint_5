@@ -70,7 +70,7 @@ class TestRegistration:
     # Успешная регистрация
     def test_registration_correct(driver, create_account):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, name=helper_functions.random_name(), email=helper_functions.random_email(), password=helper_functions.random_pass())
+        create_account(driver)
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.login_header_tag_h2))

@@ -24,3 +24,15 @@ def random_email():
 def random_pass():
     password = ''.join(random.sample(string.ascii_letters + string.digits, 6))
     return password
+
+
+# Метод генерирует имейл только с именем почтового ящика
+def mail_with_name_only():
+    email = f"{''.join(random.choice(string.ascii_lowercase) for i in range(10))}_{random.randint(5000, 5999)}"
+    return email
+
+
+# Метод генерирует имейл с ошибкой в домене 
+def mail_with_error_domain():
+    email = f"{''.join(random.choice(string.ascii_lowercase) for i in range(10))}_{random.randint(5000, 5999)}@yandex."
+    return email

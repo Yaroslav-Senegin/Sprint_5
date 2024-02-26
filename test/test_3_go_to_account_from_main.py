@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class TestPersonalAccount:
     # Переход по клику на «Личный кабинет» с главной страницы
-    def test_go_to_account_from_main(driver):
+    def test_go_to_account_from_main(self, driver):
         driver.get(UrlList.page_main_url)
         driver.find_element(*Locators.login_button_main).click()
         driver.find_element(*Locators.input_email_field).send_keys(Data.email)

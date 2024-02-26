@@ -13,8 +13,3 @@ class UrlList:
     page_main_url = 'https://stellarburgers.nomoreparties.site/'  # URL главной страницы Конструктор
     page_login_url = 'https://stellarburgers.nomoreparties.site/login' # URL страницы логин
     page_registration_url = 'https://stellarburgers.nomoreparties.site/register'  # URL страницы регистрации
-
-
-# Список имейлов не по формату для проверки регистрации с корректным имейлом
-unform_email = [f"{''.join(random.choice(string.ascii_lowercase) for i in range(10))}_{random.randint(5000, 5999)}",
-                f"{''.join(random.choice(string.ascii_lowercase) for i in range(10))}_{random.randint(5000, 5999)}@yandex."]

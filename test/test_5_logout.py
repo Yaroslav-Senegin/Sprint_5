@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class TestLogout:
     # Выход по кнопке «Выйти» в личном кабинете
-    def test_logout(driver):
+    def test_logout(self, driver):
         driver.get(UrlList.page_main_url)
         driver.find_element(*Locators.login_button_main).click()
         driver.find_element(*Locators.input_email_field).send_keys(Data.email)

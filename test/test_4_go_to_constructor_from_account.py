@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class TestConstructorRedirects:
     # Переход по клику на «Конструктор» и на логотип Stellar Burgers
-    def test_go_to_constructor_from_account(driver):        
+    def test_go_to_constructor_from_account(self, driver):        
         driver.get(UrlList.page_login_url)
         driver.find_element(*Locators.input_email_field).send_keys(Data.email)
         driver.find_element(*Locators.input_password_field).send_keys(Data.password)

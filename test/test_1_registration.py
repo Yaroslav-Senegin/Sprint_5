@@ -5,13 +5,12 @@ import helper_functions
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-
 class TestRegistration:
     # Попытка регистрации без имени
-    @pytest.mark.parametrize('name', [''])
-    def test_registration_without_name(driver, create_account, name):
+    def test_registration_without_name(self, driver):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, name)
+        driver.find_element(*Locators.input_email_field).send_keys(helper_functions.random_email())
+        driver.find_element(*Locators.input_password_field).send_keys(helper_functions.random_pass())
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.registration_button))
@@ -20,22 +19,21 @@ class TestRegistration:
 
 
     # Попытка регистрации без имейла
-    @pytest.mark.parametrize('email', [''])
-    def test_registration_without_email(driver, create_account, email):
+    def test_registration_without_email(self, driver):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, email)
+        driver.find_element(*Locators.input_name_field).send_keys(helper_functions.random_name())
+        driver.find_element(*Locators.input_password_field).send_keys(helper_functions.random_pass())
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.registration_button))
         
         assert driver.find_element(*Locators.header_h2).text == 'Регистрация'
 
-
     # Попытка регистрации без пароля
-    @pytest.mark.parametrize('password', [''])
-    def test_registration_without_pass(driver, create_account, password):
+    def test_registration_without_pass(self, driver):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, password)
+        driver.find_element(*Locators.input_name_field).send_keys(helper_functions.random_name())
+        driver.find_element(*Locators.input_email_field).send_keys(helper_functions.random_email())
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.registration_button))
@@ -45,9 +43,11 @@ class TestRegistration:
 
     # Попытка регистрации с паролем <6 символов. Проверяем граничные значения 1 и 5
     @pytest.mark.parametrize('password', ['a', 'Test1'])
-    def test_registration_password_less_6_synbols(driver, create_account, password):
+    def test_registration_password_less_6_synbols(self, driver, password):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, password)
+        driver.find_element(*Locators.input_name_field).send_keys(helper_functions.random_name())
+        driver.find_element(*Locators.input_email_field).send_keys(helper_functions.random_email())
+        driver.find_element(*Locators.input_password_field).send_keys(password)
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.incorrect_pass_message))
@@ -56,10 +56,12 @@ class TestRegistration:
 
 
     # Регистрация пользователя с имейлом не по формату
-    @pytest.mark.parametrize('email', [Data.unform_email[0], Data.unform_email[1]])
-    def test_registration_with_incorrect_email(driver, create_account, email):
+    @pytest.mark.parametrize('email', [helper_functions.mail_with_name_only(), helper_functions.mail_with_error_domain()])
+    def test_registration_with_incorrect_email(self, driver, email):
         driver.get(UrlList.page_registration_url)
-        create_account(driver, email)
+        driver.find_element(*Locators.input_name_field).send_keys(helper_functions.random_name())
+        driver.find_element(*Locators.input_email_field).send_keys(email)
+        driver.find_element(*Locators.input_password_field).send_keys(helper_functions.random_pass())
         driver.find_element(*Locators.registration_button).click() 
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.user_exists_message))
@@ -68,9 +70,11 @@ class TestRegistration:
 
 
     # Успешная регистрация
-    def test_registration_correct(driver, create_account):
+    def test_registration_correct(self, driver):
         driver.get(UrlList.page_registration_url)
-        create_account(driver)
+        driver.find_element(*Locators.input_name_field).send_keys(helper_functions.random_name())
+        driver.find_element(*Locators.input_email_field).send_keys(helper_functions.random_email())
+        driver.find_element(*Locators.input_password_field).send_keys(helper_functions.random_pass())
         driver.find_element(*Locators.registration_button).click()
         WebDriverWait(driver, 10).until(
             expected_conditions.visibility_of_element_located(Locators.login_header_tag_h2))
@@ -79,7 +83,7 @@ class TestRegistration:
 
 
     # Попытка регистрации уже существующего пользователя
-    def test_registration_with_exist_user(driver):
+    def test_registration_with_exist_user(self, driver):
         driver.get(UrlList.page_registration_url)
         driver.find_element(*Locators.input_name_field).send_keys(Data.name)
         driver.find_element(*Locators.input_email_field).send_keys(Data.email)

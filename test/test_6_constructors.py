@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class TestTabsSwitching:
     # Переход во вкладку "Соусы"
-    def test_go_to_souses(driver):
+    def test_go_to_souses(self, driver):
         driver.get(UrlList.page_main_url)
         driver.find_element(*Locators.souses_tab).click()
         WebDriverWait(driver, 10).until(
@@ -15,7 +15,7 @@ class TestTabsSwitching:
         assert driver.find_element(*Locators.souses_check).is_displayed()
 
     # Переход во вкладку "Начинки"
-    def test_go_to_nachinki(driver):
+    def test_go_to_nachinki(self, driver):
         driver.get(UrlList.page_main_url)
         driver.find_element(*Locators.nachinki_tab).click()
         WebDriverWait(driver, 10).until(
@@ -24,7 +24,7 @@ class TestTabsSwitching:
         assert driver.find_element(*Locators.nachinki_check).is_displayed()
 
     # Переход во вкладку "Булки" через "Начинки"
-    def test_go_to_bulki(driver):
+    def test_go_to_bulki(self, driver):
         driver.get(UrlList.page_main_url)
         driver.find_element(*Locators.nachinki_tab).click()
         WebDriverWait(driver, 10).until(
